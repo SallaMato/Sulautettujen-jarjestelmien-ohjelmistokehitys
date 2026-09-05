@@ -1,5 +1,6 @@
 {
     "nrf-connect.applications": [
-        "${workspaceFolder}\\Viikkotehtava_2_RTOS_osa1"
+        "${workspaceFolder}\\Viikkotehtava_2_RTOS_osa1",
+        "${workspaceFolder}\\Viikkotehtava_3_RTOS_osa2"
     ]
 }
