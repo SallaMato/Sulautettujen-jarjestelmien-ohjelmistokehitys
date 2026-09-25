@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-25T11:30:23.552654" rpa="false" schemaversion="5">
+<suite id="s1" name="Liikennevalot" source="C:\sularit_koulu\Sulautettujen-jarjestelmien-ohjelmistokehitys\VkT_6\liikennevalot.robot">
+<kw name="Valmistele Sarjaportti" type="SETUP">
+<kw name="Add Port" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<arg>baudrate=115200</arg>
+<doc>Adds new port with specified locator.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.738400" elapsed="0.013535"/>
+</kw>
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.752344" elapsed="0.000676"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.737018" elapsed="0.016181"/>
+</kw>
+<test id="s1-t1" name="Testaa Oikea Aika" line="22">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.755546" elapsed="0.000395"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.756149" elapsed="0.000674"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:23.825794" level="INFO">${vastaus} = 80X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.757091" elapsed="0.068817"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.826200" elapsed="0.001002"/>
+</kw>
+<arg>000120</arg>
+<arg>80</arg>
+<status status="PASS" start="2026-09-25T11:30:23.754736" elapsed="0.072650"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.753406" elapsed="0.074629"/>
+</test>
+<test id="s1-t2" name="Testaa Virheellinen Aika" line="25">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.830691" elapsed="0.000431"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.831482" elapsed="0.000522"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:23.895875" level="INFO">${vastaus} = i
+-3X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.832269" elapsed="0.063708"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.896342" elapsed="0.000932"/>
+</kw>
+<arg>006700</arg>
+<arg>-3</arg>
+<status status="PASS" start="2026-09-25T11:30:23.830113" elapsed="0.067386"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.829137" elapsed="0.069036"/>
+</test>
+<test id="s1-t3" name="Testaa Liian Lyhyt Aika" line="28">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.903415" elapsed="0.000503"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.904189" elapsed="0.000644"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:23.936727" level="INFO">${vastaus} = -1X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.905165" elapsed="0.031648"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.937104" elapsed="0.001270"/>
+</kw>
+<arg>123</arg>
+<arg>-1</arg>
+<status status="PASS" start="2026-09-25T11:30:23.902617" elapsed="0.035968"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.900945" elapsed="0.038760"/>
+</test>
+<test id="s1-t4" name="Testaa Nolla Aika" line="31">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.943092" elapsed="0.000422"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.943742" elapsed="0.000517"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:24.006901" level="INFO">${vastaus} = -4X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:23.944560" elapsed="0.062408"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.007243" elapsed="0.000576"/>
+</kw>
+<arg>000000</arg>
+<arg>-4</arg>
+<status status="PASS" start="2026-09-25T11:30:23.942451" elapsed="0.065476"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.941196" elapsed="0.067107"/>
+</test>
+<test id="s1-t5" name="Testaa Oikea Sekvenssi" line="34">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.010517" elapsed="0.000270"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.010935" elapsed="0.000381"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:24.067868" level="INFO">${vastaus} = n aikamerkkijono (virhekoodi -4)
+0X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.011505" elapsed="0.056483"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.068456" elapsed="0.001255"/>
+</kw>
+<arg>R,100</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-09-25T11:30:24.009990" elapsed="0.059961"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:24.009271" elapsed="0.061252"/>
+</test>
+<test id="s1-t6" name="Testaa Sekvenssi Väärällä Värillä" line="37">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.072712" elapsed="0.000278"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.073227" elapsed="0.000507"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:24.167992" level="INFO">${vastaus} = lo, aika: 100
+Red led thread started
+Red on for 100 ms
+UART vastaanotti: K,100
+-11X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.073932" elapsed="0.094178"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.168489" elapsed="0.001045"/>
+</kw>
+<arg>K,100</arg>
+<arg>-11</arg>
+<status status="PASS" start="2026-09-25T11:30:24.072269" elapsed="0.097432"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:24.071479" elapsed="0.098759"/>
+</test>
+<test id="s1-t7" name="Testaa Sekvenssi Nolla-ajalla" line="40">
+<kw name="Testaa Komento">
+<kw name="Reset Input Buffer" owner="SerialLibrary">
+<arg>${PORT}</arg>
+<doc>Clears input buffer.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.173324" elapsed="0.000578"/>
+</kw>
+<kw name="Write Data" owner="SerialLibrary">
+<arg>${komento}X</arg>
+<doc>Writes data into the port.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.174248" elapsed="0.000562"/>
+</kw>
+<kw name="Read Until" owner="SerialLibrary">
+<msg time="2026-09-25T11:30:24.209029" level="INFO">${vastaus} = 
+Dispatcher: Virheellinen komento (Virhekoodi: -11)
+-13X</msg>
+<var>${vastaus}</var>
+<arg>X</arg>
+<doc>Read until a termination sequence is found, size exceeded or timeout.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.175046" elapsed="0.034087"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${vastaus}</arg>
+<arg>${odotettu_vastaus}X</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.209507" elapsed="0.001004"/>
+</kw>
+<arg>R,0</arg>
+<arg>-13</arg>
+<status status="PASS" start="2026-09-25T11:30:24.172688" elapsed="0.037945"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:24.171477" elapsed="0.039601"/>
+</test>
+<kw name="Delete All Ports" owner="SerialLibrary" type="TEARDOWN">
+<doc>Deletes all ports maintained in the library instance.</doc>
+<status status="PASS" start="2026-09-25T11:30:24.212545" elapsed="0.000821"/>
+</kw>
+<status status="PASS" start="2026-09-25T11:30:23.558130" elapsed="0.655337"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Liikennevalot" id="s1" pass="7" fail="0" skip="0">Liikennevalot</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

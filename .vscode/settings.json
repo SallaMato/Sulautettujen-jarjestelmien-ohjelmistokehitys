@@ -4,6 +4,7 @@
         "${workspaceFolder}\\Viikkotehtava_3_RTOS_osa2",
         "${workspaceFolder}\\Viikkotehtava_4_RTOS_Debug",
         "${workspaceFolder}\\Viikkotehtava_5_Yksikkotestaus",
-        "${workspaceFolder}\\VkT_5_Yksikkotestaus"
+        "${workspaceFolder}\\VkT_5_Yksikkotestaus",
+        "${workspaceFolder}\\VkT_6"
     ]
 }
